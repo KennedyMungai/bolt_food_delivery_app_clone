@@ -1,11 +1,24 @@
 import React from 'react'
-import { StyleSheet } from 'react-native'
+import { Image, StyleSheet } from 'react-native'
+import ParallaxScrollView from './parallax-scroll-view'
 type Props = {
 	details: RestaurantData
 }
 
 const RestaurantDetails = ({ details }: Props) => {
-	return <></>
+	return (
+		<ParallaxScrollView
+			styles={{ flex: 1 }}
+			backgroundColor='white'
+			parallaxHeaderHeight={250}
+			renderBackground={() => (
+				<Image
+					source={{ uri: details.profileImage }}
+					style={{ width: '100%', height: '100%' }}
+				/>
+			)}
+		></ParallaxScrollView>
+	)
 }
 
 export default RestaurantDetails
