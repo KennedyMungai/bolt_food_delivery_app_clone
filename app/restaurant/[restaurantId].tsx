@@ -1,12 +1,8 @@
-import { View, Text } from 'react-native'
+import RestaurantDetails from '@/components/restaurant-details'
 import React from 'react'
 
 const RestaurantDetailPage = () => {
-	return (
-		<View>
-			<Text>RestaurantDetailPage</Text>
-		</View>
-	)
+	return <RestaurantDetails />
 }
 
 export default RestaurantDetailPage
