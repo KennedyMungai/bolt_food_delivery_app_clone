@@ -1,6 +1,7 @@
-import { View, Text, StyleSheet, SafeAreaView } from 'react-native'
+import { View, Text, StyleSheet, SafeAreaView, FlatList } from 'react-native'
 import React from 'react'
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons'
+import { dummyRestaurantsData } from '../../../assets/data/restaurantsData'
 
 const TabsHomePage = () => {
 	return (
@@ -11,6 +12,15 @@ const TabsHomePage = () => {
 					<Text style={styles.addressText}>Your Address Here</Text>
 				</View>
 			</View>
+
+			<FlatList
+				data={dummyRestaurantsData}
+				keyExtractor={(item) => item.id.toString()}
+				ListHeaderComponent={() => (
+					<Text style={styles.listHeaderText}>Some Hotels</Text>
+				)}
+				renderItem={({ item }) => <MarketCard data={item} />}
+			/>
 		</SafeAreaView>
 	)
 }
@@ -37,5 +47,9 @@ const styles = StyleSheet.create({
 	},
 	addressText: {
 		marginLeft: 10
+	},
+	listHeaderText: {
+		fontWeight: '600',
+		fontSize: 24
 	}
 })
