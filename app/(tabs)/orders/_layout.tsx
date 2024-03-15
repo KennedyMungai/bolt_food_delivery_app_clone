@@ -4,7 +4,7 @@ import React from 'react'
 const TabsOrdersLayout = () => {
 	return (
 		<Stack>
-			<Stack.Screen name='home' options={{ headerShown: false }} />
+			<Stack.Screen name='index' options={{ headerShown: false }} />
 		</Stack>
 	)
 }
