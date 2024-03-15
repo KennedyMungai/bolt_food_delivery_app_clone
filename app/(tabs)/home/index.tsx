@@ -2,6 +2,7 @@ import { View, Text, StyleSheet, SafeAreaView, FlatList } from 'react-native'
 import React from 'react'
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons'
 import { dummyRestaurantsData } from '../../../assets/data/restaurantsData'
+import MarketCard from '@/components/market-card'
 
 const TabsHomePage = () => {
 	return (
@@ -20,6 +21,7 @@ const TabsHomePage = () => {
 					<Text style={styles.listHeaderText}>Some Hotels</Text>
 				)}
 				renderItem={({ item }) => <MarketCard data={item} />}
+				style={{ marginTop: 20 }}
 			/>
 		</SafeAreaView>
 	)
