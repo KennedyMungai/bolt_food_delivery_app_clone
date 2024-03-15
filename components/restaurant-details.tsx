@@ -1,16 +1,12 @@
-import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
+import { StyleSheet } from 'react-native'
 
 type Props = {
 	details: RestaurantData
 }
 
 const RestaurantDetails = ({ details }: Props) => {
-	return (
-		<View style={styles.container}>
-			<Text>{details.id}</Text>
-		</View>
-	)
+	return <></>
 }
 
 export default RestaurantDetails
@@ -18,6 +14,6 @@ export default RestaurantDetails
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#FF885525'
+		backgroundColor: '#FF885535'
 	}
 })
