@@ -23,7 +23,8 @@ const RestaurantDetailPage = () => {
 		<>
 			<Stack.Screen
 				options={{
-					headerTitle: 'Hotel Details'
+					headerTitle: 'Hotel Details',
+					headerTransparent: true
 				}}
 			/>
 			<RestaurantDetails details={details} />
