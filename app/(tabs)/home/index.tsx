@@ -17,6 +17,7 @@ const TabsHomePage = () => {
 			<FlatList
 				data={dummyRestaurantsData}
 				keyExtractor={(item) => item.id.toString()}
+				showsVerticalScrollIndicator={false}
 				ListHeaderComponent={() => (
 					<Text style={styles.listHeaderText}>Some Hotels</Text>
 				)}
