@@ -14,6 +14,9 @@ const MarketCard = ({ data }: Props) => {
 					style={styles.restaurantMarketingImg}
 					resizeMode='cover'
 				/>
+				<View style={styles.overlay}>
+					<Text style={styles.overlayText}>{data.delivery} min</Text>
+				</View>
 			</View>
 		</Pressable>
 	)
@@ -29,5 +32,21 @@ const styles = StyleSheet.create({
 		width: '100%',
 		height: 200,
 		borderRadius: 7.5
+	},
+	overlay: {
+		position: 'absolute',
+		bottom: 4,
+		right: 4,
+		backgroundColor: 'white',
+		padding: 4,
+		borderRadius: 5,
+		opacity: 0.75
+	},
+	overlayText: {
+		fontSize: 16,
+		fontWeight: '600',
+		paddingVertical: 2,
+		paddingHorizontal: 4
 	}
 })
+6
