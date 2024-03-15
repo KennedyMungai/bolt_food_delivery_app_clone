@@ -22,7 +22,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.kennedymungai.bolt_food_delivery_app_clone"
     },
     "web": {
       "bundler": "metro",
