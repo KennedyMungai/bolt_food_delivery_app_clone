@@ -1,6 +1,7 @@
 import { View, Text, Pressable, Image, StyleSheet } from 'react-native'
 import React from 'react'
 import { FontAwesome } from '@expo/vector-icons'
+import { Link } from 'expo-router'
 
 type Props = {
 	data: RestaurantData
@@ -10,29 +11,33 @@ const MarketCard = ({ data }: Props) => {
 	const ratingStarColor = data.rating > 4.5 ? '#FF8C00' : 'black'
 
 	return (
-		<Pressable style={styles.cardContainer}>
-			<View>
-				<Image
-					source={{ uri: data.profileImage }}
-					style={styles.restaurantMarketingImg}
-					resizeMode='cover'
-				/>
-				<View style={styles.overlay}>
-					<Text style={styles.overlayText}>{data.delivery} min</Text>
-				</View>
-			</View>
-			<View style={styles.textContainer}>
-				<Text style={styles.restaurantName}>{data.name}</Text>
-				<View style={styles.ratingContainer}>
-					<FontAwesome
-						name='star'
-						color={ratingStarColor}
-						size={20}
+		<Link href={`/restaurant/${data.id}`} asChild>
+			<Pressable style={styles.cardContainer}>
+				<View>
+					<Image
+						source={{ uri: data.profileImage }}
+						style={styles.restaurantMarketingImg}
+						resizeMode='cover'
 					/>
-					<Text style={styles.rating}>{data.rating}</Text>
+					<View style={styles.overlay}>
+						<Text style={styles.overlayText}>
+							{data.delivery} min
+						</Text>
+					</View>
 				</View>
-			</View>
-		</Pressable>
+				<View style={styles.textContainer}>
+					<Text style={styles.restaurantName}>{data.name}</Text>
+					<View style={styles.ratingContainer}>
+						<FontAwesome
+							name='star'
+							color={ratingStarColor}
+							size={20}
+						/>
+						<Text style={styles.rating}>{data.rating}</Text>
+					</View>
+				</View>
+			</Pressable>
+		</Link>
 	)
 }
 
