@@ -13,9 +13,17 @@ const RestaurantDetailPage = () => {
 
 	if (!details) {
 		return (
-			<View style={styles.notFoundContainer}>
-				<Text style={styles.notFoundText}>Hotel Details not found</Text>
-			</View>
+			<>
+				<Stack.Screen
+					options={{
+						headerTitle: 'Hotel Details',
+						headerTransparent: true
+					}}
+				/>
+				<View style={styles.notFoundContainer}>
+					<Text style={styles.notFoundText}>Hotel not found</Text>
+				</View>
+			</>
 		)
 	}
 
@@ -43,7 +51,8 @@ const styles = StyleSheet.create({
 		justifyContent: 'center'
 	},
 	notFoundText: {
-		fontSize: 24,
-		fontWeight: 'bold'
+		fontSize: 32,
+		fontWeight: 'bold',
+		textTransform: 'uppercase'
 	}
 })
