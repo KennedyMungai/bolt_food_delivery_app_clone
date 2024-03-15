@@ -1,11 +1,14 @@
 import { View, Text, Pressable, Image, StyleSheet } from 'react-native'
 import React from 'react'
+import { FontAwesome } from '@expo/vector-icons'
 
 type Props = {
 	data: RestaurantData
 }
 
 const MarketCard = ({ data }: Props) => {
+	const ratingStarColor = data.rating > 4.5 ? '#FF8C00' : 'black'
+
 	return (
 		<Pressable style={styles.cardContainer}>
 			<View>
@@ -16,6 +19,17 @@ const MarketCard = ({ data }: Props) => {
 				/>
 				<View style={styles.overlay}>
 					<Text style={styles.overlayText}>{data.delivery} min</Text>
+				</View>
+			</View>
+			<View style={styles.textContainer}>
+				<Text style={styles.restaurantName}>{data.name}</Text>
+				<View style={styles.ratingContainer}>
+					<FontAwesome
+						name='star'
+						color={ratingStarColor}
+						size={20}
+					/>
+					<Text style={styles.rating}>{data.rating}</Text>
 				</View>
 			</View>
 		</Pressable>
@@ -47,6 +61,28 @@ const styles = StyleSheet.create({
 		fontWeight: '600',
 		paddingVertical: 2,
 		paddingHorizontal: 4
+	},
+	textContainer: {
+		display: 'flex',
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'space-between'
+	},
+	restaurantName: {
+		fontWeight: '600',
+		fontSize: 16,
+		color: '#F85'
+	},
+	ratingContainer: {
+		display: 'flex',
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+		alignItems: 'center',
+		gap: 15
+	},
+	rating: {
+		fontWeight: '600',
+		fontSize: 16
 	}
 })
 6
