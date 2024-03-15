@@ -1,12 +1,22 @@
-import { View, Text } from 'react-native'
+import { View, Text, StyleSheet, SafeAreaView } from 'react-native'
 import React from 'react'
 
 const TabsHomePage = () => {
 	return (
-		<View className='flex-1 bg-white'>
-			<Text className='text-2xl text-neutral-700'>TabsHomePage</Text>
-		</View>
+		<SafeAreaView style={styles.container}>
+			<Text>TabsHomePage</Text>
+		</SafeAreaView>
 	)
 }
 
 export default TabsHomePage
+
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		backgroundColor: '#fff',
+		alignItems: 'center',
+		justifyContent: 'center',
+		paddingVertical: 20
+	}
+})
