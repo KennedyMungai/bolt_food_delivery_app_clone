@@ -1,10 +1,14 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const RestaurantDetails = () => {
+type Props = {
+	restaurantId: string
+}
+
+const RestaurantDetails = ({ restaurantId }: Props) => {
 	return (
 		<View>
-			<Text>RestaurantDetails</Text>
+			<Text>{restaurantId}</Text>
 		</View>
 	)
 }
