@@ -35,10 +35,7 @@ function RootLayoutNav() {
 	return (
 		<Stack>
 			<Stack.Screen name='(tabs)' options={{ headerShown: false }} />
-			<Stack.Screen
-				name='restaurant/[restaurantId]'
-				options={{ headerShown: true }}
-			/>
+			<Stack.Screen name='restaurant/[restaurantId]' />
 		</Stack>
 	)
 }
