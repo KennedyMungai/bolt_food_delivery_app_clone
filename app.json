@@ -4,7 +4,7 @@
 		"slug": "bolt_food_delivery_app_clone",
 		"version": "1.0.0",
 		"orientation": "portrait",
-		"icon": "./assets/images/icon.png",
+		"icon": "./assets/images/bolt.png",
 		"scheme": "myapp",
 		"userInterfaceStyle": "automatic",
 		"splash": {
