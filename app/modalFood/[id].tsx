@@ -89,7 +89,11 @@ const FoodDetailsModal = () => {
 						width: 40,
 						borderRadius: '50%'
 					}}
-				></View>
+				>
+					<Text> - </Text>
+					<Text> 1 </Text>
+					<Text> + </Text>
+				</View>
 			</View>
 		</SafeAreaView>
 	)
