@@ -1,4 +1,9 @@
-import { FontAwesome, Ionicons } from '@expo/vector-icons'
+import {
+	AntDesign,
+	FontAwesome,
+	FontAwesome5,
+	Ionicons
+} from '@expo/vector-icons'
 import { useNavigation } from 'expo-router'
 import React, { useLayoutEffect } from 'react'
 import {
@@ -82,12 +87,61 @@ const RestaurantDetails = ({ details }: Props) => {
 						<View style={styles.ratingContainerRow}>
 							<FontAwesome
 								name='star'
-								size={17}
+								size={18}
 								color={ratingStarColor}
 							/>
 							<Text style={styles.rating}>{details.rating}</Text>
 						</View>
 					</View>
+					<View style={styles.deliveryTextContainer}>
+						<View
+							style={{
+								display: 'flex',
+								flexDirection: 'row',
+								justifyContent: 'center'
+							}}
+						>
+							<Ionicons
+								name='bicycle-sharp'
+								size={24}
+								color={'black'}
+							/>
+							<Text style={styles.deliveryText}>Delivery</Text>
+						</View>
+						<View
+							style={{
+								display: 'flex',
+								flexDirection: 'row',
+								justifyContent: 'center'
+							}}
+						>
+							<FontAwesome5
+								name='walking'
+								size={24}
+								color={'black'}
+							/>
+							<Text style={styles.deliveryText}>Pickup</Text>
+						</View>
+						<View
+							style={{
+								display: 'flex',
+								flexDirection: 'row',
+								justifyContent: 'center'
+							}}
+						>
+							<Text style={styles.deliveryTextMoreInfo}>
+								More Info
+							</Text>
+							<AntDesign
+								name='right'
+								size={16}
+								color={'black'}
+								style={styles.deliveryTextMoreInfo}
+							/>
+						</View>
+					</View>
+					<View style={styles.separator} />
+					<Text style={styles.deliveryAbout}>{details.about}</Text>
 				</View>
 			</View>
 		</ParallaxScrollView>
@@ -139,5 +193,29 @@ const styles = StyleSheet.create({
 	rating: {
 		fontWeight: 'bold',
 		fontSize: 16
+	},
+	deliveryTextContainer: {
+		display: 'flex',
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'space-between'
+	},
+	deliveryText: {
+		fontSize: 10,
+		marginLeft: 5,
+		color: '#2E303D'
+	},
+	deliveryTextMoreInfo: {
+		fontSize: 10,
+		fontWeight: 'bold'
+	},
+	separator: {
+		height: 1,
+		width: '100%',
+		backgroundColor: '#2E303D',
+		marginVertical: 16
+	},
+	deliveryAbout: {
+		color: '#2E303D'
 	}
 })
