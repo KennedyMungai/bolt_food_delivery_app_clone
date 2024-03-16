@@ -203,7 +203,7 @@ const RestaurantDetails = ({ details }: Props) => {
 						}) => (
 							<Text
 								style={{
-									fontSize: 20,
+									fontSize: 24,
 									fontWeight: 'bold',
 									color: '#3E303D',
 									marginVertical: 10
