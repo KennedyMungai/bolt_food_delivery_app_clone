@@ -35,7 +35,13 @@ function RootLayoutNav() {
 	return (
 		<Stack>
 			<Stack.Screen name='(tabs)' options={{ headerShown: false }} />
-			<Stack.Screen name='restaurant/[restaurantId]' />
+			<Stack.Screen
+				name='restaurant/[restaurantId]'
+				options={{
+					animation: 'slide_from_right',
+					animationDuration: 300
+				}}
+			/>
 		</Stack>
 	)
 }
