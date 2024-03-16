@@ -8,7 +8,9 @@ import { useNavigation } from 'expo-router'
 import React, { useLayoutEffect } from 'react'
 import {
 	Image,
+	ListRenderItem,
 	SafeAreaView,
+	SectionList,
 	StyleSheet,
 	Text,
 	TouchableOpacity,
@@ -57,6 +59,42 @@ const RestaurantDetails = ({ details }: Props) => {
 			)
 		})
 	}, [])
+
+	const data = details.food.map((item, index) => ({
+		title: item.category,
+		data: item.meals,
+		index
+	}))
+
+	const renderItem: ListRenderItem<Meal> = ({ item, index }) => (
+		<TouchableOpacity style={styles.itemContainer}>
+			<View
+				style={{
+					display: 'flex',
+					flex: 1,
+					marginVertical: 10,
+					marginRight: 16
+				}}
+			>
+				<Text
+					style={{ lineHeight: 20, fontWeight: '600', fontSize: 18 }}
+				>
+					{item.name}
+				</Text>
+				<Text
+					style={{ fontSize: 12, fontWeight: '400', lineHeight: 16 }}
+				>
+					{item.info}
+				</Text>
+				<Text>$ {item.price}</Text>
+			</View>
+			<Image
+				source={{ uri: item.img }}
+				style={styles.foodImage}
+				resizeMode='contain'
+			/>
+		</TouchableOpacity>
+	)
 
 	return (
 		<ParallaxScrollView
@@ -144,6 +182,16 @@ const RestaurantDetails = ({ details }: Props) => {
 					<Text style={styles.deliveryAbout}>{details.about}</Text>
 				</View>
 			</View>
+			<View style={styles.itemsContainer}>
+				<View style={{ margin: 6 }}>
+					<SectionList
+						sections={data}
+						scrollEnabled={false}
+						keyExtractor={(item, index) => `${item}-${index}`}
+						renderItem={renderItem}
+					/>
+				</View>
+			</View>
 		</ParallaxScrollView>
 	)
 }
@@ -220,5 +268,23 @@ const styles = StyleSheet.create({
 		color: '#2E303D',
 		fontWeight: '600',
 		fontSize: 12
+	},
+	itemsContainer: {
+		display: 'flex',
+		backgroundColor: 'white',
+		marginTop: 5,
+		borderRadius: 6
+	},
+	itemContainer: {
+		display: 'flex',
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+		marginVertical: 5,
+		alignItems: 'center'
+	},
+	foodImage: {
+		width: 100,
+		height: 100,
+		borderRadius: 10
 	}
 })
