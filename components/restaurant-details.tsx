@@ -39,7 +39,11 @@ const RestaurantDetails = ({ details }: Props) => {
 			headerTintColor: 'white',
 			headerLeft: () => (
 				<TouchableOpacity onPress={() => navigation.goBack()}>
-					<Ionicons name='arrow-back' size={30} color={'white'} />
+					<Ionicons
+						name='arrow-back'
+						size={30}
+						color={headerIconColor}
+					/>
 				</TouchableOpacity>
 			),
 			headerRight: () => (
@@ -50,14 +54,14 @@ const RestaurantDetails = ({ details }: Props) => {
 						<Ionicons
 							name='share-social-outline'
 							size={30}
-							color={'white'}
+							color={headerIconColor}
 						/>
 					</TouchableOpacity>
 					<TouchableOpacity>
 						<Ionicons
 							name='search-sharp'
 							size={30}
-							color={'white'}
+							color={headerIconColor}
 						/>
 					</TouchableOpacity>
 				</View>
