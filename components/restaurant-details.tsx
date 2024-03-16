@@ -26,23 +26,22 @@ const RestaurantDetails = ({ details }: Props) => {
 			headerTitle: '',
 			headerTintColor: 'white',
 			headerLeft: () => (
-				<TouchableOpacity
-					onPress={() => navigation.goBack()}
-					style={styles.roundButton}
-				>
+				<TouchableOpacity onPress={() => navigation.goBack()}>
 					<Ionicons name='arrow-back' size={30} color={'white'} />
 				</TouchableOpacity>
 			),
 			headerRight: () => (
-				<View style={styles.rightContainer}>
-					<TouchableOpacity style={styles.roundButton}>
+				<View
+					style={{ display: 'flex', flexDirection: 'row', gap: 20 }}
+				>
+					<TouchableOpacity>
 						<Ionicons
 							name='share-social-outline'
 							size={30}
 							color={'white'}
 						/>
 					</TouchableOpacity>
-					<TouchableOpacity style={styles.roundButton}>
+					<TouchableOpacity>
 						<Ionicons
 							name='search-sharp'
 							size={30}
@@ -140,11 +139,5 @@ const styles = StyleSheet.create({
 	rating: {
 		fontWeight: 'bold',
 		fontSize: 16
-	},
-	roundButton: {},
-	rightContainer: {
-		display: 'flex',
-		flexDirection: 'row',
-		gap: 15
 	}
 })
