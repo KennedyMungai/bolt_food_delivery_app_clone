@@ -13,17 +13,9 @@ const RestaurantDetailPage = () => {
 
 	if (!details) {
 		return (
-			<>
-				<Stack.Screen
-					options={{
-						headerTitle: 'Hotel Details',
-						headerTransparent: true
-					}}
-				/>
-				<View style={styles.notFoundContainer}>
-					<Text style={styles.notFoundText}>Hotel not found</Text>
-				</View>
-			</>
+			<View style={styles.notFoundContainer}>
+				<Text style={styles.notFoundText}>Hotel not found</Text>
+			</View>
 		)
 	}
 
