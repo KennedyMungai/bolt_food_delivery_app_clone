@@ -67,7 +67,7 @@ const RestaurantDetails = ({ details }: Props) => {
 				</View>
 			)
 		})
-	}, [])
+	}, [headerIconColor])
 
 	const data = details.food.map((item, index) => ({
 		title: item.category,
