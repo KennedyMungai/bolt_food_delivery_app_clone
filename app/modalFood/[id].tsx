@@ -16,7 +16,7 @@ const FoodDetailsModal = () => {
 
 	const foundMeals: Meal | undefined = meals?.find((m) => m.id === +id)
 
-	console.log(foundMeals)
+	console.log(id)
 
 	return (
 		<SafeAreaView style={styles.container}>
