@@ -5,11 +5,12 @@ import {
 	Ionicons
 } from '@expo/vector-icons'
 import { useNavigation } from 'expo-router'
-import React, { useLayoutEffect } from 'react'
+import React, { useLayoutEffect, useState } from 'react'
 import {
 	Image,
 	ListRenderItem,
 	SafeAreaView,
+	ScrollView,
 	SectionList,
 	StyleSheet,
 	Text,
@@ -23,6 +24,10 @@ type Props = {
 }
 
 const RestaurantDetails = ({ details }: Props) => {
+	const [headerIconColor, setHeaderIconColor] = useState('white')
+	const [activeButtonIndex, setActiveButtonIndex] = useState(0)
+	const [activeCategoryIndex, setActiveCategoryIndex] = useState(0)
+
 	const ratingStarColor = details.rating > 4.5 ? '#FF8C00' : 'black'
 
 	const navigation = useNavigation()
@@ -97,125 +102,167 @@ const RestaurantDetails = ({ details }: Props) => {
 	)
 
 	return (
-		<ParallaxScrollView
-			styles={{ flex: 1 }}
-			backgroundColor='white'
-			parallaxHeaderHeight={250}
-			renderBackground={() => (
-				<Image
-					source={{ uri: details.profileImage }}
-					style={{ width: '100%', height: '100%' }}
-					resizeMode='cover'
-				/>
-			)}
-			stickyHeaderHeight={100}
-			contentBackgroundColor='#ECEDEF'
-			renderStickyHeader={() => (
-				<SafeAreaView style={styles.headerContainer}>
-					<Text style={styles.headerText}>{details.name}</Text>
-				</SafeAreaView>
-			)}
-		>
-			<View style={styles.namesContainer}>
-				<View style={{ margin: 6 }}>
-					<View style={styles.titleContainerRow}>
-						<Text style={styles.restaurantName}>
-							{details.name}
-						</Text>
-						<View style={styles.ratingContainerRow}>
-							<FontAwesome
-								name='star'
-								size={18}
-								color={ratingStarColor}
-							/>
-							<Text style={styles.rating}>{details.rating}</Text>
-						</View>
-					</View>
-					<View style={styles.deliveryTextContainer}>
-						<View
-							style={{
-								display: 'flex',
-								flexDirection: 'row',
-								justifyContent: 'center'
-							}}
-						>
-							<Ionicons
-								name='bicycle-sharp'
-								size={24}
-								color={'black'}
-							/>
-							<Text style={styles.deliveryText}>Delivery</Text>
-						</View>
-						<View
-							style={{
-								display: 'flex',
-								flexDirection: 'row',
-								justifyContent: 'center'
-							}}
-						>
-							<FontAwesome5
-								name='walking'
-								size={24}
-								color={'black'}
-							/>
-							<Text style={styles.deliveryText}>Pickup</Text>
-						</View>
-						<View
-							style={{
-								display: 'flex',
-								flexDirection: 'row',
-								justifyContent: 'center'
-							}}
-						>
-							<Text style={styles.deliveryTextMoreInfo}>
-								More Info
+		<>
+			<ParallaxScrollView
+				styles={{ flex: 1 }}
+				backgroundColor='white'
+				parallaxHeaderHeight={250}
+				renderBackground={() => (
+					<Image
+						source={{ uri: details.profileImage }}
+						style={{ width: '100%', height: '100%' }}
+						resizeMode='cover'
+					/>
+				)}
+				stickyHeaderHeight={100}
+				contentBackgroundColor='#ECEDEF'
+				renderStickyHeader={() => (
+					<SafeAreaView style={styles.headerContainer}>
+						<Text style={styles.headerText}>{details.name}</Text>
+					</SafeAreaView>
+				)}
+			>
+				<View style={styles.namesContainer}>
+					<View style={{ margin: 6 }}>
+						<View style={styles.titleContainerRow}>
+							<Text style={styles.restaurantName}>
+								{details.name}
 							</Text>
-							<AntDesign
-								name='right'
-								size={16}
-								color={'black'}
-								style={styles.deliveryTextMoreInfo}
-							/>
+							<View style={styles.ratingContainerRow}>
+								<FontAwesome
+									name='star'
+									size={18}
+									color={ratingStarColor}
+								/>
+								<Text style={styles.rating}>
+									{details.rating}
+								</Text>
+							</View>
 						</View>
-					</View>
-					<View style={styles.separator} />
-					<Text style={styles.deliveryAbout}>{details.about}</Text>
-				</View>
-			</View>
-			<View style={styles.itemsContainer}>
-				<View style={{ margin: 6 }}>
-					<SectionList
-						sections={data}
-						scrollEnabled={false}
-						keyExtractor={(item, index) => `${item}-${index}`}
-						renderItem={renderItem}
-						ItemSeparatorComponent={() => (
+						<View style={styles.deliveryTextContainer}>
 							<View
 								style={{
-									borderWidth: StyleSheet.hairlineWidth,
-									borderColor: 'black',
-									marginVertical: 16
-								}}
-							/>
-						)}
-						renderSectionHeader={({
-							section: { title, index }
-						}) => (
-							<Text
-								style={{
-									fontSize: 24,
-									fontWeight: 'bold',
-									color: '#3E303D',
-									marginVertical: 10
+									display: 'flex',
+									flexDirection: 'row',
+									justifyContent: 'center'
 								}}
 							>
-								{title}
-							</Text>
-						)}
-					/>
+								<Ionicons
+									name='bicycle-sharp'
+									size={24}
+									color={'black'}
+								/>
+								<Text style={styles.deliveryText}>
+									Delivery
+								</Text>
+							</View>
+							<View
+								style={{
+									display: 'flex',
+									flexDirection: 'row',
+									justifyContent: 'center'
+								}}
+							>
+								<FontAwesome5
+									name='walking'
+									size={24}
+									color={'black'}
+								/>
+								<Text style={styles.deliveryText}>Pickup</Text>
+							</View>
+							<View
+								style={{
+									display: 'flex',
+									flexDirection: 'row',
+									justifyContent: 'center'
+								}}
+							>
+								<Text style={styles.deliveryTextMoreInfo}>
+									More Info
+								</Text>
+								<AntDesign
+									name='right'
+									size={16}
+									color={'black'}
+									style={styles.deliveryTextMoreInfo}
+								/>
+							</View>
+						</View>
+						<View style={styles.separator} />
+						<Text style={styles.deliveryAbout}>
+							{details.about}
+						</Text>
+					</View>
 				</View>
+				<View style={styles.itemsContainer}>
+					<View style={{ margin: 6 }}>
+						<SectionList
+							sections={data}
+							scrollEnabled={false}
+							keyExtractor={(item, index) => `${item}-${index}`}
+							renderItem={renderItem}
+							ItemSeparatorComponent={() => (
+								<View
+									style={{
+										borderWidth: StyleSheet.hairlineWidth,
+										borderColor: 'black',
+										marginVertical: 16
+									}}
+								/>
+							)}
+							renderSectionHeader={({
+								section: { title, index }
+							}) => (
+								<Text
+									style={{
+										fontSize: 24,
+										fontWeight: 'bold',
+										color: '#3E303D',
+										marginVertical: 10
+									}}
+								>
+									{title}
+								</Text>
+							)}
+						/>
+					</View>
+				</View>
+			</ParallaxScrollView>
+
+			<View style={styles.stickySegments}>
+				<ScrollView
+					horizontal
+					showsHorizontalScrollIndicator={false}
+					contentContainerStyle={{
+						paddingHorizontal: 15,
+						alignItems: 'center',
+						gap: 10
+					}}
+				>
+					{details.food.map((item, index) => (
+						<TouchableOpacity
+							key={index}
+							// onPress={() => selectCategory(index)}
+							style={
+								activeButtonIndex === index
+									? styles.stickyButtonActive
+									: styles.stickyButton
+							}
+						>
+							<Text
+								style={
+									activeButtonIndex === index
+										? styles.stickyButtonTextActive
+										: styles.stickyButtonText
+								}
+							>
+								{item.category}
+							</Text>
+						</TouchableOpacity>
+					))}
+				</ScrollView>
 			</View>
-		</ParallaxScrollView>
+		</>
 	)
 }
 
@@ -309,5 +356,30 @@ const styles = StyleSheet.create({
 		width: 100,
 		height: 100,
 		borderRadius: 10
+	},
+	stickyButton: {
+		paddingHorizontal: 6,
+		paddingVertical: 3
+	},
+	stickyButtonActive: {
+		paddingHorizontal: 5,
+		paddingVertical: 3
+	},
+	stickyButtonText: {
+		lineHeight: 20
+	},
+	stickyButtonTextActive: {
+		fontWeight: 'bold',
+		lineHeight: 20
+	},
+	stickySegments: {
+		position: 'absolute',
+		height: 50,
+		left: 0,
+		right: 0,
+		top: 80,
+		backgroundColor: 'white',
+		overflow: 'hidden',
+		paddingBottom: 4
 	}
 })
