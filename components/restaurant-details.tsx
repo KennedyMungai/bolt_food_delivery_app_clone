@@ -189,6 +189,15 @@ const RestaurantDetails = ({ details }: Props) => {
 						scrollEnabled={false}
 						keyExtractor={(item, index) => `${item}-${index}`}
 						renderItem={renderItem}
+						ItemSeparatorComponent={() => (
+							<View
+								style={{
+									borderWidth: StyleSheet.hairlineWidth,
+									borderColor: 'black',
+									marginVertical: 16
+								}}
+							/>
+						)}
 					/>
 				</View>
 			</View>
