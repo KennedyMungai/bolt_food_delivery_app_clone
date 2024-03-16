@@ -1,7 +1,7 @@
 import { dummyRestaurantsData } from '@/assets/data/restaurantsData'
 import { useLocalSearchParams } from 'expo-router'
 import React from 'react'
-import { Image, SafeAreaView, StyleSheet, View } from 'react-native'
+import { Image, SafeAreaView, StyleSheet, Text, View } from 'react-native'
 
 const FoodDetailsModal = () => {
 	const { id, restaurantId } = useLocalSearchParams()
@@ -16,8 +16,6 @@ const FoodDetailsModal = () => {
 
 	const foundMeals: Meal | undefined = meals?.find((m) => m.id === +id)
 
-	console.log(id)
-
 	return (
 		<SafeAreaView style={styles.container}>
 			<View style={styles.someContainer}>
@@ -26,6 +24,30 @@ const FoodDetailsModal = () => {
 					resizeMode='contain'
 					style={styles.imageContainer}
 				/>
+				<View style={{ padding: 15 }}>
+					<Text style={{ fontSize: 32, fontWeight: 'bold' }}>
+						{foundMeals?.name}
+					</Text>
+					<Text
+						style={{
+							lineHeight: 20,
+							fontWeight: '500',
+							color: '#6E6D72',
+							marginVertical: 6
+						}}
+					>
+						$ {foundMeals?.name}
+					</Text>
+					<Text
+						style={{
+							lineHeight: 20,
+							fontWeight: '500',
+							color: '#6F707C'
+						}}
+					>
+						$ {foundMeals?.info}
+					</Text>
+				</View>
 			</View>
 		</SafeAreaView>
 	)
