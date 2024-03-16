@@ -77,7 +77,7 @@ const RestaurantDetails = ({ details }: Props) => {
 				}}
 			>
 				<Text
-					style={{ lineHeight: 20, fontWeight: '600', fontSize: 18 }}
+					style={{ lineHeight: 20, fontWeight: '500', fontSize: 16 }}
 				>
 					{item.name}
 				</Text>
@@ -197,6 +197,20 @@ const RestaurantDetails = ({ details }: Props) => {
 									marginVertical: 16
 								}}
 							/>
+						)}
+						renderSectionHeader={({
+							section: { title, index }
+						}) => (
+							<Text
+								style={{
+									fontSize: 20,
+									fontWeight: 'bold',
+									color: '#3E303D',
+									marginVertical: 10
+								}}
+							>
+								{title}
+							</Text>
 						)}
 					/>
 				</View>
