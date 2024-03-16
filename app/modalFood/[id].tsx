@@ -66,6 +66,31 @@ const FoodDetailsModal = () => {
 					onChangeText={setNote}
 				/>
 			</View>
+
+			<View
+				style={{
+					display: 'flex',
+					flexDirection: 'row',
+					backgroundColor: 'white',
+					marginTop: 3,
+					padding: 10,
+					marginBottom: 'auto',
+					justifyContent: 'space-between'
+				}}
+			>
+				<View
+					style={{
+						display: 'flex',
+						flexDirection: 'row',
+						alignItems: 'center',
+						justifyContent: 'space-evenly',
+						borderWidth: StyleSheet.hairlineWidth,
+						height: 40,
+						width: 40,
+						borderRadius: '50%'
+					}}
+				></View>
+			</View>
 		</SafeAreaView>
 	)
 }
