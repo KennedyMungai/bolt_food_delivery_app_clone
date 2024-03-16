@@ -182,7 +182,8 @@ const styles = StyleSheet.create({
 	restaurantName: {
 		fontWeight: '600',
 		fontSize: 20,
-		color: '#F85'
+		color: '#F85',
+		marginBottom: 20
 	},
 	ratingContainerRow: {
 		display: 'flex',
@@ -216,6 +217,8 @@ const styles = StyleSheet.create({
 		marginVertical: 16
 	},
 	deliveryAbout: {
-		color: '#2E303D'
+		color: '#2E303D',
+		fontWeight: '600',
+		fontSize: 12
 	}
 })
