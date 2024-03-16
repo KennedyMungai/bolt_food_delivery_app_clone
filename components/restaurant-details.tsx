@@ -4,7 +4,7 @@ import {
 	FontAwesome5,
 	Ionicons
 } from '@expo/vector-icons'
-import { useNavigation } from 'expo-router'
+import { Link, useNavigation } from 'expo-router'
 import React, { useLayoutEffect, useState } from 'react'
 import {
 	Image,
@@ -76,33 +76,43 @@ const RestaurantDetails = ({ details }: Props) => {
 	}))
 
 	const renderItem: ListRenderItem<Meal> = ({ item, index }) => (
-		<TouchableOpacity style={styles.itemContainer}>
-			<View
-				style={{
-					display: 'flex',
-					flex: 1,
-					marginVertical: 10,
-					marginRight: 16
-				}}
-			>
-				<Text
-					style={{ lineHeight: 20, fontWeight: '500', fontSize: 16 }}
+		<Link href={`/modalFood/${item.id}`} asChild>
+			<TouchableOpacity style={styles.itemContainer}>
+				<View
+					style={{
+						display: 'flex',
+						flex: 1,
+						marginVertical: 10,
+						marginRight: 16
+					}}
 				>
-					{item.name}
-				</Text>
-				<Text
-					style={{ fontSize: 12, fontWeight: '400', lineHeight: 16 }}
-				>
-					{item.info}
-				</Text>
-				<Text>$ {item.price}</Text>
-			</View>
-			<Image
-				source={{ uri: item.img }}
-				style={styles.foodImage}
-				resizeMode='contain'
-			/>
-		</TouchableOpacity>
+					<Text
+						style={{
+							lineHeight: 20,
+							fontWeight: '500',
+							fontSize: 16
+						}}
+					>
+						{item.name}
+					</Text>
+					<Text
+						style={{
+							fontSize: 12,
+							fontWeight: '400',
+							lineHeight: 16
+						}}
+					>
+						{item.info}
+					</Text>
+					<Text>$ {item.price}</Text>
+				</View>
+				<Image
+					source={{ uri: item.img }}
+					style={styles.foodImage}
+					resizeMode='contain'
+				/>
+			</TouchableOpacity>
+		</Link>
 	)
 
 	return (
