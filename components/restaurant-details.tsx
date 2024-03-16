@@ -1,13 +1,58 @@
-import { FontAwesome } from '@expo/vector-icons'
-import React from 'react'
-import { Image, SafeAreaView, StyleSheet, Text, View } from 'react-native'
+import { FontAwesome, Ionicons } from '@expo/vector-icons'
+import { useNavigation } from 'expo-router'
+import React, { useLayoutEffect } from 'react'
+import {
+	Image,
+	SafeAreaView,
+	StyleSheet,
+	Text,
+	TouchableOpacity,
+	View
+} from 'react-native'
 import ParallaxScrollView from './parallax-scroll-view'
+
 type Props = {
 	details: RestaurantData
 }
 
 const RestaurantDetails = ({ details }: Props) => {
 	const ratingStarColor = details.rating > 4.5 ? '#FF8C00' : 'black'
+
+	const navigation = useNavigation()
+
+	useLayoutEffect(() => {
+		navigation.setOptions({
+			headerTransparent: true,
+			headerTitle: '',
+			headerTintColor: 'white',
+			headerLeft: () => (
+				<TouchableOpacity
+					onPress={() => navigation.goBack()}
+					style={styles.roundButton}
+				>
+					<Ionicons name='arrow-back' size={30} color={'white'} />
+				</TouchableOpacity>
+			),
+			headerRight: () => (
+				<View style={styles.rightContainer}>
+					<TouchableOpacity style={styles.roundButton}>
+						<Ionicons
+							name='share-social-outline'
+							size={30}
+							color={'white'}
+						/>
+					</TouchableOpacity>
+					<TouchableOpacity style={styles.roundButton}>
+						<Ionicons
+							name='search-sharp'
+							size={30}
+							color={'white'}
+						/>
+					</TouchableOpacity>
+				</View>
+			)
+		})
+	}, [])
 
 	return (
 		<ParallaxScrollView
@@ -95,5 +140,11 @@ const styles = StyleSheet.create({
 	rating: {
 		fontWeight: 'bold',
 		fontSize: 16
+	},
+	roundButton: {},
+	rightContainer: {
+		display: 'flex',
+		flexDirection: 'row',
+		gap: 15
 	}
 })
