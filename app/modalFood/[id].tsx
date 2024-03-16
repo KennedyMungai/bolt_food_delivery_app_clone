@@ -85,9 +85,9 @@ const FoodDetailsModal = () => {
 						alignItems: 'center',
 						justifyContent: 'space-evenly',
 						borderWidth: StyleSheet.hairlineWidth,
-						height: 40,
+						height: 20,
 						width: 40,
-						borderRadius: '50%'
+						borderRadius: 20
 					}}
 				>
 					<Text> - </Text>
