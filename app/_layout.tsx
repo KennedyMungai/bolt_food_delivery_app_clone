@@ -36,7 +36,9 @@ function RootLayoutNav() {
 								color={'#5A5A5A'}
 							/>
 						</TouchableOpacity>
-					)
+					),
+					animation: 'slide_from_bottom',
+					animationDuration: 300
 				}}
 			/>
 		</Stack>
