@@ -22,7 +22,7 @@ const FoodDetailsModal = () => {
 		<SafeAreaView style={styles.container}>
 			<View style={styles.someContainer}>
 				<Image
-					source={{ uri: '' }}
+					source={{ uri: foundMeals?.img }}
 					resizeMode='contain'
 					style={styles.imageContainer}
 				/>
