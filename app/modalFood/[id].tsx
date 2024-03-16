@@ -1,9 +1,18 @@
 import { dummyRestaurantsData } from '@/assets/data/restaurantsData'
 import { useLocalSearchParams } from 'expo-router'
-import React from 'react'
-import { Image, SafeAreaView, StyleSheet, Text, View } from 'react-native'
+import React, { useState } from 'react'
+import {
+	Image,
+	SafeAreaView,
+	StyleSheet,
+	Text,
+	TextInput,
+	View
+} from 'react-native'
 
 const FoodDetailsModal = () => {
+	const [note, setNote] = useState()
+
 	const { id, restaurantId } = useLocalSearchParams()
 
 	const restaurantById = dummyRestaurantsData.find(
@@ -48,6 +57,14 @@ const FoodDetailsModal = () => {
 						$ {foundMeals?.info}
 					</Text>
 				</View>
+			</View>
+
+			<View>
+				<TextInput
+					placeholder='Add a note'
+					value={note}
+					onChangeText={setNote}
+				/>
 			</View>
 		</SafeAreaView>
 	)
